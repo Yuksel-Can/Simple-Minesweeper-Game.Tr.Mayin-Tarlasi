@@ -15,17 +15,39 @@ public class MayinTarlasi {
 	Random random = new Random();
 	Scanner scanner = new Scanner(System.in);
 	
-	public MayinTarlasi(int rowSize, int colSize) {
+	public void start() {
+		map();
+		run();
+	}
+	public void map() {
+		System.out.println("Mayýn Tarlasý Oyunumuza Hoþgeldiniz");
+		System.out.println("Lütfen Oynamak Ýstediðiniz Boyutlarý giriniz");
+		System.out.print("Satýr : ");
+		int getRow = scanner.nextInt();
+		System.out.print("Sütun : ");
+		int getCol = scanner.nextInt();
+		while(!(getRow>=0 && getCol >=0)) {
+			System.out.println("Geçersiz Deðer Girdiniz !");
+			System.out.print("Satýr : ");
+			getRow = scanner.nextInt();
+			System.out.print("Sütun : ");
+			getCol = scanner.nextInt();
+		}
+		createMap(getRow, getCol);
+		
+	}
+	
+	public void createMap(int rowSize, int colSize) {
 		this.rowSize = rowSize;
 		this.colSize = colSize;
 		this.map = new int[rowSize][colSize];
 		this.board = new int[rowSize][colSize];
 		this.size = rowSize*colSize;
-		System.out.println("Tarla Ebatý Oluþtu");
+		System.out.println("Oyun Alaný Oluþtu");
 	}
 	
 	public void run() {
-		createGame();
+		createBomb();
 		printMap(map);
 		System.out.println("Oyun baþladý");
 		int setRow, setCol;
@@ -53,7 +75,7 @@ public class MayinTarlasi {
 				printMap(board);
 				success++;
 				if(success==size-(size/4)) {
-					System.out.println("Oyunu KAZANDINIZ !!!");
+					System.out.println("Oyunu KAZANDINIZ!!!");
 					break;
 				}
 			}else {
@@ -62,11 +84,10 @@ public class MayinTarlasi {
 		}
 	}
 	
-	public void createGame() {
+	public void createBomb() {
 		// 1/9 kadar mayýn olabilir
 		int randRow, randCol;
 		int count=0;
-		
 		while(count != this.size/4) {
 			randRow = random.nextInt(rowSize);
 			randCol = random.nextInt(colSize);
@@ -76,7 +97,7 @@ public class MayinTarlasi {
 				count++;
 			}
 		}
-		System.out.println("Tarla  Oluþtu");
+		System.out.println("Mayýnlar Yerleþtirildi");
 
 	}
 	

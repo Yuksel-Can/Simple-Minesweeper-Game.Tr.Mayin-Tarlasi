@@ -6,9 +6,9 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		/*
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Mayýn Tarlasý Oyunumuza Hoþgeldiniz");
-		
 		System.out.println("Lütfen Oynamak Ýstediðiniz Boyutlarý giriniz");
 		System.out.print("Satýr : ");
 		int getRow = scan.nextInt();
@@ -22,6 +22,12 @@ public class Main {
 		}
 		//MayinTarlasi mayinTarlasi = new MayinTarlasi(getRow,getCol);
 		//mayinTarlasi.run();
+		*/
+		
+		MayinTarlasi mayinTarlasi = new MayinTarlasi();
+		mayinTarlasi.start();
+		
+		
 	}
 	
 
